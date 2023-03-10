@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>C Querying Web Resources | Bioconductor Packages: Development, Maintenance, and Peer Review</title>
+<meta name="author" content="Kevin Rue-Albrecht">
+<meta name="author" content="Daniela Cassol">
+<meta name="author" content="Johannes Rainer">
+<meta name="author" content="Lori Shepherd">
+<meta name="description" content="Packages that rely on access to web resources need to be written carefully. Web resources can change location, can be temporarily unavailable, or can be very slow to access and retrieve. Functions...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="C Querying Web Resources | Bioconductor Packages: Development, Maintenance, and Peer Review">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Packages that rely on access to web resources need to be written carefully. Web resources can change location, can be temporarily unavailable, or can be very slow to access and retrieve. Functions...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C Querying Web Resources | Bioconductor Packages: Development, Maintenance, and Peer Review">
+<meta name="twitter:description" content="Packages that rely on access to web resources need to be written carefully. Web resources can change location, can be temporarily unavailable, or can be very slow to access and retrieve. Functions...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Bioconductor Packages: Development, Maintenance, and Peer Review</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Package Submissions</li>
+<li><a class="" href="submission-overview.html">Overview</a></li>
+<li><a class="" href="bioconductor-package-submissions.html"><span class="header-section-number">1</span> Bioconductor Package Submissions</a></li>
+<li class="book-part">Package Development Guidelines</li>
+<li><a class="" href="develop-overview.html">Overview</a></li>
+<li><a class="" href="package-name.html"><span class="header-section-number">2</span> Package name</a></li>
+<li><a class="" href="general.html"><span class="header-section-number">3</span> General Bioconductor Package Development</a></li>
+<li><a class="" href="important-bioconductor-package-development-features.html"><span class="header-section-number">4</span> Important Bioconductor Package Development Features</a></li>
+<li><a class="" href="readme.html"><span class="header-section-number">5</span> The README file</a></li>
+<li><a class="" href="description.html"><span class="header-section-number">6</span> The DESCRIPTION file</a></li>
+<li><a class="" href="namespace.html"><span class="header-section-number">7</span> The NAMESPACE file</a></li>
+<li><a class="" href="news.html"><span class="header-section-number">8</span> The NEWS file</a></li>
+<li><a class="" href="license.html"><span class="header-section-number">9</span> The LICENSE file</a></li>
+<li><a class="" href="citation.html"><span class="header-section-number">10</span> The CITATION file</a></li>
+<li><a class="" href="sysdep.html"><span class="header-section-number">11</span> The INSTALL file</a></li>
+<li><a class="" href="docs.html"><span class="header-section-number">12</span> Documentation</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">13</span> Package data</a></li>
+<li><a class="" href="tests.html"><span class="header-section-number">14</span> Unit tests</a></li>
+<li><a class="" href="r-code.html"><span class="header-section-number">15</span> R code</a></li>
+<li><a class="" href="other-than-Rcode.html"><span class="header-section-number">16</span> Fortran / C / C++ / Python / Third-Party Code</a></li>
+<li><a class="" href="shiny.html"><span class="header-section-number">17</span> Shiny apps</a></li>
+<li><a class="" href="non-software.html"><span class="header-section-number">18</span> Non-Software Packages</a></li>
+<li><a class="" href="gitignore.html"><span class="header-section-number">19</span> The .gitignore file</a></li>
+<li><a class="" href="conclusion.html"><span class="header-section-number">20</span> Conclusion</a></li>
+<li class="book-part">Bioconductor Package Maintenance</li>
+<li><a class="" href="package-maintenance.html">Overview</a></li>
+<li><a class="" href="git-version-control.html"><span class="header-section-number">21</span> Git Version Control</a></li>
+<li><a class="" href="versionnum.html"><span class="header-section-number">22</span> Version Numbering</a></li>
+<li><a class="" href="troubleshooting-build-report.html"><span class="header-section-number">23</span> Troubleshooting Build Report</a></li>
+<li><a class="" href="debugging-cc-code.html"><span class="header-section-number">24</span> Debugging C/C++ code</a></li>
+<li><a class="" href="deprecation.html"><span class="header-section-number">25</span> Deprecation Guidelines</a></li>
+<li><a class="" href="package-end-of-life-policy.html"><span class="header-section-number">26</span> Package End of Life Policy</a></li>
+<li><a class="" href="branch-rename-faqs.html"><span class="header-section-number">27</span> Branch Rename FAQs</a></li>
+<li class="book-part">Package Reviewer Resources</li>
+<li><a class="" href="reviewer-resources-overview.html">Overview</a></li>
+<li><a class="" href="review-expectation.html"><span class="header-section-number">28</span> Review Expectations</a></li>
+<li><a class="" href="reviewtools.html"><span class="header-section-number">29</span> Reviewer Resources and Tools</a></li>
+<li><a class="" href="review-volunteer-chapter.html"><span class="header-section-number">30</span> Volunteer to Review</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="use-devel.html"><span class="header-section-number">A</span> Using the ‘Devel’ Version of Bioconductor</a></li>
+<li><a class="" href="long-tests.html"><span class="header-section-number">B</span> Long Tests</a></li>
+<li><a class="active" href="querying-web-resources.html"><span class="header-section-number">C</span> Querying Web Resources</a></li>
+<li><a class="" href="c-fortran.html"><span class="header-section-number">D</span> C and Fortran code</a></li>
+<li><a class="" href="cmavericks-best-practices.html"><span class="header-section-number">E</span> C++/Mavericks Best Practices</a></li>
+<li><a class="" href="man-links.html"><span class="header-section-number">F</span> Debug: Links in Rd files</a></li>
+<li><a class="" href="booknews.html"><span class="header-section-number">G</span> NEWS</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/Bioconductor/pkgrevdocs">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="querying-web-resources" class="section level1" number="33">
+<h1>
+<span class="header-section-number">C</span> Querying Web Resources<a class="anchor" aria-label="anchor" href="#querying-web-resources"><i class="fas fa-link"></i></a>
+</h1>
+<p>Packages that rely on access to web resources need to be written
+carefully. Web resources can change location, can be temporarily
+unavailable, or can be very slow to access and retrieve. Functions
+that query web resources, should anticipate and handle such situations
+gracefully – failing quickly and clearly when the resource is not
+available in a reasonable time frame. Some avoidable problems seen in
+<em>Bioconductor</em> package code include infinite loops, use of all
+available <em>R</em> connections, and unclear error messages.</p>
+<div id="guiding-principles-1" class="section level2" number="33.1">
+<h2>
+<span class="header-section-number">C.1</span> Guiding Principles<a class="anchor" aria-label="anchor" href="#guiding-principles-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Remember the <em>Bioconductor</em> packages are built nightly across multiple
+operating systems, and that users benefit from easy-to-run vignettes
+and examples.</p>
+<ol style="list-style-type: decimal">
+<li><p>Download files of reasonable size. Use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> to estimate the
+download time. Remember the package should require less than 5 minutes to
+run <code>R CMD check --no-build-vignettes</code>.</p></li>
+<li><p>Set a limit on the number of times the function tries a URL. Avoid
+<code>while()</code> statements that have no guaranteed termination. These
+become infinite loops and eventually result in build-system <code>TIMEOUT</code>s.</p></li>
+<li><p>Supply an informative error message.</p></li>
+</ol>
+</div>
+<div id="template-for-resource-queries" class="section level2" number="33.2">
+<h2>
+<span class="header-section-number">C.2</span> Template for Resource Queries<a class="anchor" aria-label="anchor" href="#template-for-resource-queries"><i class="fas fa-link"></i></a>
+</h2>
+<p>This function can serve as a template for appropriate resource
+retrieval. It tries to retrieve the resource one or several times before
+failing, and takes as arguments:</p>
+<ul>
+<li>
+<code>URL</code>, the resource to be queried, typically <code>character(1)</code> or
+<code><a href="https://rdrr.io/r/base/connections.html">url()</a></code>.</li>
+<li>
+<code>FUN</code>, the function to be used to query the resource. Examples might
+include <code><a href="https://rdrr.io/r/base/readLines.html">readLines()</a></code>, <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code>, <code><a href="https://httr.r-lib.org/reference/GET.html">httr::GET()</a></code>,
+<code>RCurl::getURL()</code>.</li>
+<li>
+<code>...</code>: additional arguments used by <code>FUN</code>.</li>
+<li>
+<code>N.TRIES</code>: the number of times the URL will be attempted; only under
+exceptional circumstances might this differ from its default value.</li>
+</ul>
+<p>The return value is the retrieved resource. If resource retrieval
+fails, the function indicates the failure, including the condition
+(error) message on the last attempt. Warnings propagate to the user in
+the normal way.</p>
+<pre><code>getURL &lt;- function(URL, FUN, ..., N.TRIES=1L) {
+    N.TRIES &lt;- as.integer(N.TRIES)
+    stopifnot(length(N.TRIES) == 1L, !is.na(N.TRIES))
+
+    while (N.TRIES &gt; 0L) {
+        result &lt;- tryCatch(FUN(URL, ...), error=identity)
+        if (!inherits(result, "error"))
+            break
+        N.TRIES &lt;- N.TRIES - 1L
+    }
+
+    if (N.TRIES == 0L) {
+        stop("'getURL()' failed:",
+             "\n  URL: ", URL,
+             "\n  error: ", conditionMessage(result))
+    }
+
+    result
+}</code></pre>
+<p>Base <em>R</em> functions using <code><a href="https://rdrr.io/r/base/connections.html">url()</a></code> connections respect
+<code>getOption("timeout")</code>; see <code><a href="https://rdrr.io/r/base/connections.html">?url</a></code> for details.</p>
+<p><code>FUN</code> might be implemented to retrieve the resource and test for
+status, e.g.,</p>
+<pre><code>FUN &lt;- function(URL, ...) {
+    response &lt;- httr::GET(URL, timeout(getOption("timeout")), ...)
+    stop_for_status(response)
+    response
+}</code></pre>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="long-tests.html"><span class="header-section-number">B</span> Long Tests</a></div>
+<div class="next"><a href="c-fortran.html"><span class="header-section-number">D</span> C and Fortran code</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#querying-web-resources"><span class="header-section-number">C</span> Querying Web Resources</a></li>
+<li><a class="nav-link" href="#guiding-principles-1"><span class="header-section-number">C.1</span> Guiding Principles</a></li>
+<li><a class="nav-link" href="#template-for-resource-queries"><span class="header-section-number">C.2</span> Template for Resource Queries</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/Bioconductor/pkgrevdocs/blob/master/web-query.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/Bioconductor/pkgrevdocs/edit/master/web-query.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Bioconductor Packages: Development, Maintenance, and Peer Review</strong>" was written by Kevin Rue-Albrecht, Daniela Cassol, Johannes Rainer, Lori Shepherd. It was last built on 2023-03-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
